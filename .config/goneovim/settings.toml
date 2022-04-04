@@ -1,0 +1,16 @@
+[Editor]
+BorderlessWindow = true
+
+FontFamily = "Fira Code"
+FontSize = 14
+Linespace = 10
+
+Clipboard = true
+
+IndentGuide = true
+
+SmoothScroll = true
+
+[Cursor]
+SmoothMove = true
+Duration = 100
