@@ -1,0 +1,17 @@
+{
+  "workspace": [
+    {
+      "path": "/",
+      "mainwin": {
+        "x": 1097,
+        "y": 5,
+        "w": 817,
+        "h": 1136,
+        "state": "Normal",
+        "BackgroundComposition": "none",
+        "CustomTitleBar": false
+      }
+    }
+  ],
+  "Logging": null
+}
