@@ -1,0 +1,116 @@
+# declare modes
+::default
+
+:: mode_window @
+:: mode_window_move @
+:: mode_window_move_space @
+:: mode_window_toggle @
+:: mode_window_stack @
+:: mode_window_resize @
+
+:: mode_space @
+:: mode_space_arrange @
+
+# define escape as exit from every mode
+mode_window < escape ; default
+mode_window_move < escape ; default
+mode_window_move_space < escape ; default
+mode_window_toggle < escape ; default
+mode_window_stack < escape ; default
+mode_window_resize < escape ; default
+
+mode_space < escape ; default
+mode_space_arrange < escape ; default
+
+# define mode entry
+rcmd - space ; default
+
+rcmd - w ; mode_window
+mode_window < m ; mode_window_move
+mode_window_move < s ; mode_window_move_space
+mode_window < t ; mode_window_toggle
+mode_window < s ; mode_window_stack
+mode_window < r ; mode_window_resize
+# TODO: space move
+rcmd - s ; mode_space
+mode_space < a ; mode_space_arrange
+
+# manage windows
+mode_window < x : yabai -m window --close; skhd -k "escape"
+mode_window < return : yabai -m window --toggle zoom-fullscreen; skhd -k "escape"
+mode_window < f : yabai -m window --toggle float; skhd -k "escape"
+mode_window < a : yabai -m window --toggle sticky; skhd -k "escape"
+
+mode_window < h : yabai -m window --focus west; skhd -k "escape"
+mode_window < j : yabai -m window --focus south; skhd -k "escape"
+mode_window < k : yabai -m window --focus north; skhd -k "escape"
+mode_window < l : yabai -m window --focus east; skhd -k "escape"
+
+mode_window < 0x2F : yabai -m window --focus recent; skhd -k "escape" # 0x2F is the next macos virtual key code
+mode_window < tab : yabai -m window --focus next; skhd -k "escape"
+
+# moving windows
+mode_window_move < h : yabai -m window --warp west; skhd -k "escape"
+mode_window_move < j : yabai -m window --warp south; skhd -k "escape"
+mode_window_move < k : yabai -m window --warp north; skhd -k "escape"
+mode_window_move < l : yabai -m window --warp east; skhd -k "escape"
+
+# move window to space — follow focus to destination
+mode_window_move_space < 0x2F : yabai -m window --space recent; yabai -m space --focus recent; skhd -k "escape"
+mode_window_move_space < h : yabai -m window --space prev; yabai -m space --focus prev;
+mode_window_move_space < l : yabai -m window --space next; yabai -m space --focus next;
+
+mode_window_move_space < 1 : yabai -m window --space 1; yabai -m space --focus 1; skhd -k "escape"
+mode_window_move_space < 2 : yabai -m window --space 2; yabai -m space --focus 2; skhd -k "escape"
+mode_window_move_space < 3 : yabai -m window --space 3; yabai -m space --focus 3; skhd -k "escape"
+mode_window_move_space < 4 : yabai -m window --space 4; yabai -m space --focus 4; skhd -k "escape"
+mode_window_move_space < 5 : yabai -m window --space 5; yabai -m space --focus 5; skhd -k "escape"
+mode_window_move_space < 6 : yabai -m window --space 6; yabai -m space --focus 6; skhd -k "escape"
+mode_window_move_space < 7 : yabai -m window --space 7; yabai -m space --focus 7; skhd -k "escape"
+mode_window_move_space < 8 : yabai -m window --space 8; yabai -m space --focus 8; skhd -k "escape"
+mode_window_move_space < 9 : yabai -m window --space 9; yabai -m space --focus 9; skhd -k "escape"
+
+# stack windows
+mode_window_stack < h : yabai -m window --stack west; skhd -k "escape"
+mode_window_stack < j : yabai -m window --stack south; skhd -k "escape"
+mode_window_stack < k : yabai -m window --stack north; skhd -k "escape"
+mode_window_stack < l : yabai -m window --stack east; skhd -k "escape"
+
+mode_window_stack < u : yabai -m window --insert stack; skhd -k "escape"
+
+# resize windows — use shift to shrink
+mode_window_resize < h : yabai -m window --resize left:-25:0
+mode_window_resize < j : yabai -m window --resize bottom:0:25
+mode_window_resize < k : yabai -m window --resize top:0:-25
+mode_window_resize < l : yabai -m window --resize right:25:0
+
+mode_window_resize < shift - h : yabai -m window --resize right:-25:0
+mode_window_resize < shift - j : yabai -m window --resize top:0:25
+mode_window_resize < shift - k : yabai -m window --resize bottom:0:-25
+mode_window_resize < shift - l : yabai -m window --resize left:25:0
+
+# manage spaces
+mode_space < i : yabai -m space --create; skhd -k "escape"
+mode_space < x : yabai -m space --destroy; skhd -k "escape"
+
+mode_space < r : yabai -m space --rotate 270
+mode_space < b : yabai -m space --balance; skhd -k "escape" 
+
+mode_space < 0x2F : yabai -m space --focus recent; skhd -k "escape"
+mode_space < l: yabai -m space --focus next
+mode_space < h : yabai -m space --focus prev
+
+mode_space < 1 : yabai -m space --focus 1; skhd -k "escape"
+mode_space < 2 : yabai -m space --focus 2; skhd -k "escape"
+mode_space < 3 : yabai -m space --focus 3; skhd -k "escape"
+mode_space < 4 : yabai -m space --focus 4; skhd -k "escape"
+mode_space < 5 : yabai -m space --focus 5; skhd -k "escape"
+mode_space < 6 : yabai -m space --focus 6; skhd -k "escape"
+mode_space < 7 : yabai -m space --focus 7; skhd -k "escape"
+mode_space < 8 : yabai -m space --focus 8; skhd -k "escape"
+mode_space < 9 : yabai -m space --focus 9; skhd -k "escape"
+
+# change space layout
+mode_space_arrange < s : yabai -m space --layout stack; skhd -k "escape"
+mode_space_arrange < f : yabai -m space --layout float; skhd -k "escape"
+mode_space_arrange < t : yabai -m space --layout bsp; skhd -k "escape"
