@@ -1,0 +1,9 @@
+set relativenumber number
+set surround
+" use idea joining with vim
+set ideajoin
+" copy to system clipboard as well
+set clipboard+=unnamed
+" turn off alert sound when escape is pressed sometimes
+set visualbell
+set noerrorbells
