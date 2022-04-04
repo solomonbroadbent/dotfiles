@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# ensure the script is being run as sudo by checking the EUID is 0
+if [ "$EUID" -ne 0 ]
+	then echo "gotta run this one with sudo 👍🏼"
+	exit
+fi
+
+pmset -a disablesleep 1
+echo "sleep enabled 😴"

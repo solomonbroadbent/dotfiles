@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# TODO: option selector for audio, video, etc
+# TODO: thumbnail?
+# TODO: slow server workaround
+# TODO: system notification when done
+
+$OUTPUT=/dev/null
+
+youtube-dl --external-downloader=aria2c \
+		--external-downloader-args '--min-split-size=1M --max-connection-per-server=16 --max-concurrent-downloads=16 --split=16' \
+		--embed-thumbnail \
+		--extract-audio \
+		--audio-format best \
+		--audio-quality 0 $1 2>&1

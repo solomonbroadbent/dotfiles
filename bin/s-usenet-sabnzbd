@@ -1,0 +1,4 @@
+#!/bin/sh
+echo "TODO: write this script"
+echo "Launching sabnzbd"
+sabnzbd --help

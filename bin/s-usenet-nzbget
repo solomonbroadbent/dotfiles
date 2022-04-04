@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "TODO: write this script"
+nzbget --help

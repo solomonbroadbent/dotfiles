@@ -1,0 +1,5 @@
+echo "gitkraken open. should close y/n? closing..."
+echo "gitkraken closed running fix"
+codesign --remove-signature /Applications/GitKraken.app/Contents/Frameworks/GitKraken\ Helper\ \(Renderer\).app
+echo "fix run successfully. opening gitkraken 🐙"
+echo "gitkraken opened successfully. exiting"

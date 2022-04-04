@@ -1,0 +1,4 @@
+# https://github.com/imsnif/synp
+# TODO: make work with npx
+
+npx synp --source-file yarn.lock
