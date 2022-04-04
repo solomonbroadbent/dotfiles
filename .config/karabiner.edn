@@ -1,0 +1,10 @@
+:modifiers {:hypr :left_shift}
+
+
+{:main 
+  [{
+    :des "caps ... lock -> if held hyper | if tapped escape"
+    :rules [[:##caps_lock :hypr nil {:alone :escape}]]
+
+  }]
+}
