@@ -16,11 +16,20 @@ return require('packer').startup({function()
 	use 'wbthomason/packer.nvim' -- manager packer with packer
 
 	-- lsp etc
-	use 'https://github.com/neovim/nvim-lspconfig'
+	use 'neovim/nvim-lspconfig'
 	use { 'williamboman/nvim-lsp-installer', config = function() require 'config-lsp' end }
-	use { 'lukas-reineke/indent-blankline.nvim', config = function() require 'config-indent-blankline' end}
 
-	-- fuzzy finder
+	-- lsp completion. not entirely sure why i need this 😕
+	use 'hrsh7th/nvim-cmp'
+	use 'hrsh7th/cmp-nvim-lsp'
+	-- use null-ls
+
+	-- snippets — it's required by nvim-cmp to have one
+	use 'hrsh7th/vim-vsnip'
+	use 'hrsh7th/vim-vsnip-integ' -- i think needed to integrate with native neovim lsp
+	-- use 'rafamadriz/friendly-snippets' -- a bunch of usefull snippets
+
+	-- telescope fuzzy finder + extensions
 	use {
 	    'nvim-telescope/telescope.nvim',
 	    requires = { {'nvim-lua/plenary.nvim'} },
@@ -29,7 +38,7 @@ return require('packer').startup({function()
 	use {
 	    'nvim-telescope/telescope-fzf-native.nvim',
 	    run = 'make',
-	} -- improves speed etc supposedly
+	} -- improves speed by factor 10 + more supposedly
 
 	-- harpoon
 	use {
@@ -38,13 +47,15 @@ return require('packer').startup({function()
 	}
 
 	-- themes
-	use 'mhartington/oceanic-next'
 	use 'kristijanhusak/vim-hybrid-material'
 	use { 'kaicataldo/material.vim', branch = 'main' }
 
 	-- status bar
 	use 'vim-airline/vim-airline'
 	use 'vim-airline/vim-airline-themes'
+
+	-- indent guides
+	use { 'lukas-reineke/indent-blankline.nvim', config = function() require 'config-indent-blankline' end}
 
 	-- icons
 	use 'ryanoasis/vim-devicons' -- apparently should be loaded last
