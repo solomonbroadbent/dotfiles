@@ -1,5 +1,8 @@
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
+" lsp etc
+Plug 'https://github.com/neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
 " themes
 Plug 'mhartington/oceanic-next'
 Plug 'kristijanhusak/vim-hybrid-material'
