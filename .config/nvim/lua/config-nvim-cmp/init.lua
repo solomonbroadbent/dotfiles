@@ -14,7 +14,7 @@ cmp.setup({
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
     }),
-  }
+  },
 
   sources = cmp.config.sources({
       { name = 'nvim_lsp' },
@@ -24,6 +24,3 @@ cmp.setup({
     }),
 
 })
-
--- ... magically setup lspconfig
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())

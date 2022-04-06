@@ -16,7 +16,10 @@ vim.cmd [[ command! Test lua require('custom-scripts').test() ]]
 -- TODO: https://github.com/hrsh7th/nvim-cmp/issues/156#issuecomment-916338617
 
 lsp_installer.on_server_ready(function(server)
-    local opts = {}
+    local opts = {
+      -- pass this capabilities from to every lsp server. makes nvim-cmp work with lsp-installer!
+      capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    }
 
     -- (optional) Customize the options passed to the server
     -- if server.name == "tsserver" then

@@ -12,17 +12,29 @@ local config = {
   	}
 }
 
-return require('packer').startup({function()
+return require('packer').startup({function(use)
 	use 'wbthomason/packer.nvim' -- manager packer with packer
 
 	-- lsp etc
 	use 'neovim/nvim-lspconfig'
-	use { 'williamboman/nvim-lsp-installer', config = function() require 'config-lsp' end }
+	use {
+	  'williamboman/nvim-lsp-installer',
+	  config = function() require 'config-lsp' end,
+	}
+	-- use null-ls
 
 	-- lsp completion. not entirely sure why i need this 😕
-	use 'hrsh7th/nvim-cmp'
-	use 'hrsh7th/cmp-nvim-lsp'
-	-- use null-ls
+	use {
+	  'hrsh7th/nvim-cmp',
+	  config = function() require 'config-nvim-cmp' end,
+	}
+	use 'hrsh7th/cmp-nvim-lsp' -- needed ...
+	use 'hrsh7th/cmp-buffer' -- trigger autocomplete as typing
+	use 'hrsh7th/cmp-path' -- nvim-cmp source for filesystem paths
+	use {
+	  'hrsh7th/cmp-cmdline', -- nvim-cmp source for neovim's commandline
+	  config = function() require 'config-cmp-cmdline' end,
+	}
 
 	-- snippets — it's required by nvim-cmp to have one
 	use 'hrsh7th/vim-vsnip'
@@ -38,6 +50,7 @@ return require('packer').startup({function()
 	use {
 	    'nvim-telescope/telescope-fzf-native.nvim',
 	    run = 'make',
+
 	} -- improves speed by factor 10 + more supposedly
 
 	-- harpoon
@@ -63,11 +76,14 @@ return require('packer').startup({function()
 	use 'vim-airline/vim-airline-themes'
 
 	-- indent guides
-	use { 'lukas-reineke/indent-blankline.nvim', config = function() require 'config-indent-blankline' end }
+	use {
+	  'lukas-reineke/indent-blankline.nvim',
+	  config = function() require 'config-indent-blankline' end,
+	}
 
 	-- cursor animations
-	use { 
-	  'edluffy/specs.nvim', 
+	use {
+	  'edluffy/specs.nvim',
 	  config = function() require 'config-specs' end,
 	}
 
