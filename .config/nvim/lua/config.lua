@@ -44,7 +44,15 @@ return require('packer').startup({function()
 	use {
 	  'ThePrimeagen/harpoon',
 	  requires = { {'nvim-lua/plenary.nvim'} },
+	  config = function() require 'config-harpoon' end,
 	}
+
+	-- typical autopairs, surround/sandwich etc plugins
+	use {
+	  'windwp/nvim-autopairs',
+	  config = function() require 'config-autopairs' end,
+	}
+	use 'machakann/vim-sandwich'
 
 	-- themes
 	use 'kristijanhusak/vim-hybrid-material'
@@ -55,7 +63,7 @@ return require('packer').startup({function()
 	use 'vim-airline/vim-airline-themes'
 
 	-- indent guides
-	use { 'lukas-reineke/indent-blankline.nvim', config = function() require 'config-indent-blankline' end}
+	use { 'lukas-reineke/indent-blankline.nvim', config = function() require 'config-indent-blankline' end }
 
 	-- icons
 	use 'ryanoasis/vim-devicons' -- apparently should be loaded last
