@@ -65,6 +65,12 @@ return require('packer').startup({function()
 	-- indent guides
 	use { 'lukas-reineke/indent-blankline.nvim', config = function() require 'config-indent-blankline' end }
 
+	-- cursor animations
+	use { 
+	  'edluffy/specs.nvim', 
+	  config = function() require 'config-specs' end,
+	}
+
 	-- icons
 	use 'ryanoasis/vim-devicons' -- apparently should be loaded last
 end,
