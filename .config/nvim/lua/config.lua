@@ -67,6 +67,12 @@ return require('packer').startup({function(use)
 	}
 	use 'machakann/vim-sandwich'
 
+	-- trouble — warnings, errors, quickfix list etc
+	use {
+	  'folke/trouble.nvim',
+	  config = function() require 'config-trouble' end,
+	}
+
 	-- themes
 	use 'kristijanhusak/vim-hybrid-material'
 	use { 'kaicataldo/material.vim', branch = 'main' }

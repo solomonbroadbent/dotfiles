@@ -21,6 +21,19 @@ lsp_installer.on_server_ready(function(server)
       capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
     }
 
+    local signs = {
+      Error = " ",
+      Warn = " ",
+      Hint = " ",
+      Info = " ",
+    }
+
+    -- add icons to gutter
+    for type, icon in pairs(signs) do
+      local hl = "DiagnosticSign" .. type
+      vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
+    end
+
     -- (optional) Customize the options passed to the server
     -- if server.name == "tsserver" then
     --     opts.root_dir = function() ... end
