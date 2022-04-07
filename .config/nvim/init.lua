@@ -80,14 +80,4 @@ vim.opt.incsearch = true
 vim.g.nobackup = true -- don't make annoying .swap files (i think?)
 vim.g.nowrap = true -- don't wrap on load. maybe not working...
 
--- use space key as leader — first ensure it isn't mapped elsewhere first
-vim.api.nvim_set_keymap('n', '<Space>', '<nop>',  {noremap = true, silent = true })
-vim.g.mapleader = ' '
-
--- crap for telescope
---  TODO: move to telescope config file
-vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', {noremap = true, silent = true})
-
+require 'key-binds'
