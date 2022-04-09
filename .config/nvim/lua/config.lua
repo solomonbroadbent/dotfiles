@@ -100,6 +100,13 @@ return require('packer').startup({function(use)
 	  config = function() require 'config-specs' end,
 	}
 
+	-- use nvim in the browser
+	use {
+    'glacambre/firenvim',
+    run = function() vim.fn['firenvim#install'](0) end,
+		config = function() require 'config-firenvim' end,
+	}
+
 	-- icons
 	use 'ryanoasis/vim-devicons' -- apparently should be loaded last
 end,

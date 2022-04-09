@@ -1,0 +1,13 @@
+-- delete around function
+-- grow selection
+-- format?
+-- format selection?
+-- indent
+-- un-indent
+
+-- *OTHER STUFF* --
+-- TODO: set iskeyword+=- -- also treat text object with kebabs case ('text-object-name') as singular text objects
+-- TODO: create namespace for all lua files to avoid clashes
+-- TODO: make packer auto install?
+-- TODO: lazy loading stuff
+-- TODO: maybe swap to vim closer from autopairs
