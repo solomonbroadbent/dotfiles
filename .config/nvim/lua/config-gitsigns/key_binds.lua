@@ -32,7 +32,7 @@ local module = {}
 		   },
 	} , { buffer = buffer_number })
 
-	 local options = { prefix = 'leader', buffer = buffer_number }
+	 local options = { prefix = '<leader>', buffer = buffer_number }
 	 which_key.register({
 
 		 g = {
@@ -52,7 +52,7 @@ local module = {}
 				 h = { gitsigns.stage_hunk, 'hunk', },
 			 },
 
-			 reset = {
+			 r = {
 				 name = 'reset',
 
 				 b = { gitsigns.reset_buffer, 'buffer', },
