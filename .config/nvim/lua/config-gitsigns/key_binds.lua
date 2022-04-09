@@ -1,73 +1,71 @@
 local module = {}
 
-module.setup_key_binds = function (buffer_number)
-	local which_key = require 'which-key'
+ module.setup_key_binds = function (buffer_number)
+	 local which_key = require 'which-key'
 
-	local gitsigns = package.loaded.gitsigns
+	 local gitsigns = package.loaded.gitsigns
 	local hunk_key_bind = 'h'
 
-	local navigate_to_next_hunk = function ()
-      if vim.wo.diff then return hunk_key_bind end
-      vim.schedule(function() gitsigns.next_hunk() end)
-      return '<ignore>'
-  end
+	 local navigate_to_next_hunk = function ()
+       if vim.wo.diff then return hunk_key_bind end
+       vim.schedule(function() gitsigns.next_hunk() end)
+       return '<ignore>'
+   end
 
-	local navigate_to_previous_hunk = function ()
-		if vim.wo.diff then return hunk_key_bind end
-    vim.schedule(function() gitsigns.prev_hunk() end)
-    return '<ignore>'
-	end
+	 local navigate_to_previous_hunk = function ()
+		 if vim.wo.diff then return hunk_key_bind end
+     vim.schedule(function() gitsigns.prev_hunk() end)
+     return '<ignore>'
+	 end
 
-	local blame_full_line = function ()
-		gitsigns.blame_line { full = true }
-	end
+	 local blame_full_line = function ()
+		 gitsigns.blame_line { full = true }
+	 end
 
-	which_key.register({
+	 which_key.register({
+	  	['['] = {
+ 		 	[hunk_key_bind] = { navigate_to_next_hunk, 'next hunk' },
+	 	} ,
 
-		['['] = {
-			[hunk_key_bind] = { navigate_to_next_hunk, 'next hunk' },
-		},
+	  	[']'] = {
+		  	[hunk_key_bind] = { navigate_to_previous_hunk, 'previous hunk' },
+		   },
+	} , { buffer = buffer_number })
 
-		[']'] = {
-			[hunk_key_bind] = { navigate_to_previous_hunk, 'previous hunk' },
-		},
+	 local options = { prefix = 'leader', buffer = buffer_number }
+	 which_key.register({
 
-	}, { buffer = buffer_number })
+		 g = {
+			 name = 'git',
 
-	local options = { prefix = 'leader', buffer = buffer_number }
-	which_key.register({
+			 b = {
+				 name = 'blame',
 
-		g = {
-			name = 'git',
+				 l = { blame_full_line, 'line', },
+				 t = { gitsigns.toggle_current_line_blame, 'toggle (line)', }
+			 },
 
-			b = {
-				name = 'blame',
+			 s = {
+				 name = 'stage',
 
-				l = { blame_full_line, 'line', },
-				t = { gitsigns.toggle_current_line_blame, 'toggle (line)', }
-			},
+				 b = { gitsigns.stage_buffer, 'buffer', },
+				 h = { gitsigns.stage_hunk, 'hunk', },
+			 },
 
-			s = {
-				name = 'stage',
+			 reset = {
+				 name = 'reset',
 
-				b = { gitsigns.stage_buffer, 'buffer', },
-				h = { gitsigns.stage_hunk, 'hunk', },
-			},
+				 b = { gitsigns.reset_buffer, 'buffer', },
+			 },
 
-			reset = {
-				name = 'reset',
+			 d = {
+				 name = 'diff',
 
-				b = { gitsigns.reset_buffer, 'buffer', },
-			},
+				 d = { gitsigns.diffthis, 'diff this', },
+			 },
 
-			d = {
-				name = 'diff',
-
-				d = { gitsigns.diffthis, 'diff this', },
-			},
-
-		},
-	}, options)
-end
+		 },
+	 }, options)
+ end
 
 return module
