@@ -57,8 +57,13 @@ return require('packer').startup({function(use)
 	use {
 	    'nvim-telescope/telescope-fzf-native.nvim',
 	    run = 'make',
-
 	} -- improves speed by factor 10 + more supposedly
+
+	-- show git changes in editor + status bar
+	use {
+		'lewis6991/gitsigns.nvim',
+		config = function() require 'config-gitsigns' end,
+	}
 
 	-- harpoon
 	use {
