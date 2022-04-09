@@ -9,11 +9,11 @@ cmp.setup({
   },
 
   mapping = {
-    ['<S-space>'] = cmp.mapping({
+    ['<S-tab>'] = cmp.mapping({
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
     }),
-		['<space>'] = cmp.mapping.confirm({ select = true }),
+		['<tab>'] = cmp.mapping.confirm({ select = true }),
 		['<C-j>'] = cmp.mapping.select_next_item(),
 		['<C-k>'] = cmp.mapping.select_prev_item(),
   },

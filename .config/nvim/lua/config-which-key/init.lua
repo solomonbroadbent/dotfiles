@@ -1,0 +1,3 @@
+vim.g.timeoutlen = 200 -- milliseconds to wait before opening. seems to not work...
+vim.g.ttimeoutlen = 200 -- ??
+require('which-key').setup {} -- use the default settings

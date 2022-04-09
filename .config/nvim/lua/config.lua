@@ -80,6 +80,12 @@ return require('packer').startup({function(use)
 	  config = function() require 'config-trouble' end,
 	}
 
+	-- which key — key mappings popup!
+	use {
+		"folke/which-key.nvim",
+		config = function () require 'config-which-key' end,
+	}
+
 	-- themes
 	use 'kristijanhusak/vim-hybrid-material'
 	use { 'kaicataldo/material.vim', branch = 'main' }
