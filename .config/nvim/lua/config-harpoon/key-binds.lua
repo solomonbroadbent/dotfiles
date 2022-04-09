@@ -1,9 +1,24 @@
-local opts = { noremap = true, silent = true }
+local which_key = require('which-key')
 
-vim.api.nvim_set_keymap('n', '<leader>hf', '<cmd>lua require("harpoon.mark").add_file()<cr>', opts)
+local opts = { prefix = '<leader>', noremap = true, silent = true }
 
-vim.api.nvim_set_keymap('n', '<leader>hm', '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', opts)
+local actions = {
+	harpoon_file = '<cmd>lua require("harpoon.mark").add_file()<cr>',
 
-vim.api.nvim_set_keymap('n', '<leader>hn', '<cmd>lua require("harpoon.ui").nav_next()<cr>', opts)
+	show_menu = '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>',
 
-vim.api.nvim_set_keymap('n', '<leader>hp', '<cmd>lua require("harpoon.ui").next_prev()<cr>', opts)
+	next_mark =  '<cmd>lua require("harpoon.ui").nav_next()<cr>',
+
+	prev_mark = '<cmd>lua require("harpoon.ui").next_prev()<cr>',
+}
+
+which_key.register({
+	h = {
+		name = 'harpoon',
+
+		f = { actions.harpoon_file, 'file here' },
+		m = { actions.show_menu, 'menu' },
+		n = { actions.next_mark, 'next' },
+		p = { actions.prev_mark, 'previous' },
+	},
+}, opts)

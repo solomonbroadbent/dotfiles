@@ -1,13 +1,31 @@
-local opt = {silent = true, noremap = true}
+local which_key = require('which-key')
 
-vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opt)
+local opts = { prefix = '<leader>', noremap = true, silent = true }
 
-vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", opt)
+local actions = {
+	toggle = "<cmd>TroubleToggle<cr>",
 
-vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", opt)
+	show_workspace_diagnostics = "<cmd>Trouble workspace_diagnostics<cr>",
 
-vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", opt)
+	show_document_diagnostics = "<cmd>Trouble document_diagnostics<cr>",
 
-vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", opt)
+	show_loc_list = "<cmd>Trouble loclist<cr>",
 
-vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", opt)
+	show_quick_fixes = "<cmd>Trouble quickfix<cr>",
+
+	show_lsp_references = "<cmd>Trouble lsp_references<cr>",
+}
+
+which_key.register({
+	x = {
+		name = 'trouble',
+
+		x = { actions.toggle, 'toggle' },
+		w = { actions.show_workspace_diagnostics, 'workspace diagnostics' },
+		d = { actions.show_document_diagnostics, 'document diagnostics' },
+		l = { actions.show_loc_list, 'loc list' },
+		q = { actions.show_quick_fixes, 'quick fixes' },
+		R = { actions.show_lsp_references, 'reference lsp' },
+	}
+}, opts)
+

@@ -1,33 +1,52 @@
+local which_key = require 'which-key'
+
 local module = {}
 
 local opts = { noremap = true, silent = true }
 
 module.unset_general_key_binds = function ()
-	vim.api.nvim_set_keymap('n', 'H', '<nop>', opts) -- using H for help
-	vim.api.nvim_set_keymap('n', 'r', '<nop>', opts) -- using r for 'refactor'
+	which_key.register({
+		H = { '<nop>' }, -- using H for help
+	 	r = { '<nop>' }, -- using r for 'refactor'
+	}, opts)
 end
 
-module.lsp_on_attach = function (_, bufnr)
+module.lsp_on_attach = function (_, buffer_number)
 	local prefix = '<cmd>lua vim.lsp.buf'
 
 	local key_binds = {
-		{ sequence = 'gD', command = prefix .. '.declaration()<cr>' },
-		{ sequence = 'gd', command = prefix .. '.definition()<cr>' },
-		{ sequence = 'gi', command = prefix .. '.implementation()<cr>' },
-		{ sequence = 'gr', command = prefix .. '.references()<cr>' },
+		g = {
+			name = 'go to',
 
-		{ sequence = 'HH', command = prefix .. '.hover()<cr>' },
-		{ sequence = 'Hs', command = prefix .. '.signature_help()<cr>' },
-		{ sequence = 'Ha', command = prefix .. '.code_action()<cr>' },
-		{ sequence = 'Htd', command = prefix .. '.type_definition()<cr>' },
+			D = { prefix .. '.declaration()<cr>', 'declaration', },
+			d = { prefix .. '.definition()<cr>', 'definition', },
+			i = { prefix .. '.implementation()<cr>', 'implementation', },
+			r = { prefix .. '.references()<cr>', 'references', },
+		},
 
-		{ sequence = 'rf', command = prefix .. '.formatting()<cr>' },
-		{ sequence = 'rr', command = prefix .. '.rename()<cr>' },
+		H = {
+			name = 'help',
+
+			H = { prefix .. '.hover()<cr>', 'hover popup', },
+			s = { prefix .. '.signature_help()<cr>', 'signature definition', },
+			a = { prefix .. '.code_action()<cr>', 'code action', },
+			t = {
+				name = 'type',
+
+				d = { prefix .. '.type_definition()<cr>', 'defintion', },
+			},
+		},
+
+		r = {
+			name = 'refactor',
+
+			f = { prefix .. '.formatting()<cr>', 'format', },
+			r = { prefix .. '.rename()<cr>', 'rename', },
+		},
+
 	}
 
-	for _, key_bind in pairs(key_binds) do
-		vim.api.nvim_buf_set_keymap(bufnr, 'n', key_bind.sequence, key_bind.command, opts)
-	end
+	which_key.register(key_binds, { buffer = buffer_number })
 end
 
 module.lsp_flags = {
