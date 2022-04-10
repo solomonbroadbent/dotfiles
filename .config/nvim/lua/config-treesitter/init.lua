@@ -1,3 +1,8 @@
+-- prefer to download treesitter bindings using git instead of curl
+require("nvim-treesitter.install").prefer_git = true
+
+local key_binds = require('config-treesitter/key-binds').key_binds
+
 require('nvim-treesitter.configs').setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
   ensure_installed = {
@@ -39,10 +44,10 @@ require('nvim-treesitter.configs').setup {
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
+      init_selection = key_binds.prefix_subcommand .. key_binds.start,
+      node_incremental = key_binds.prefix_subcommand .. key_binds.node_grow,
+      node_decremental = key_binds.prefix_subcommand .. key_binds.node_shrink,
+      scope_incremental = key_binds.prefix_subcommand .. key_binds.scope_grow,
     },
   },
 
