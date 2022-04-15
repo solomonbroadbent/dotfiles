@@ -3,13 +3,12 @@
 -- let &packpath=&runtimepath
 -- source ~/.vimrc
 
-require('config')
+require 'config/plugins'
+require 'config/plugins/key-binds'
 
 vim.opt.termguicolors = true -- use colors
 
 require 'config/themes/material/kaicataldo'
-
-require 'config/key-binds'
 
 -- things for https://github.com/ryanoasis/vim-devicons
 vim.g.encoding = 'UTF-8'

@@ -19,7 +19,7 @@ return require('packer').startup({function(use)
 	use 'neovim/nvim-lspconfig'
 	use {
 	  'williamboman/nvim-lsp-installer',
-	  config = function() require 'config/lsp' end,
+	  config = function() require 'config/plugins/lsp' end,
 	}
 	-- use 'jose-elias-alvarez/null-ls.nvim'
 	-- use null-ls
@@ -27,14 +27,14 @@ return require('packer').startup({function(use)
 	-- lsp completion. not entirely sure why i need this 😕
 	use {
 	  'hrsh7th/nvim-cmp',
-	  config = function() require 'config/cmp' end,
+	  config = function() require 'config/plugins/cmp' end,
 	}
 	use 'hrsh7th/cmp-nvim-lsp' -- needed ...
 	use 'hrsh7th/cmp-buffer' -- trigger autocomplete as typing
 	use 'hrsh7th/cmp-path' -- nvim-cmp source for filesystem paths
 	use {
 	  'hrsh7th/cmp-cmdline', -- nvim-cmp source for neovim's commandline
-	  config = function() require 'config/cmp/cmdline' end,
+	  config = function() require 'config/plugins/cmp/cmdline' end,
 	}
 
 	-- snippets — it's required by nvim-cmp to have one
@@ -47,13 +47,13 @@ return require('packer').startup({function(use)
 	  'nvim-treesitter/nvim-treesitter',
 	  run = ':TSUpdate',
 	}
-	require 'config/treesitter' -- need to configure treesitter -after- it's imported
+	require 'config/plugins/treesitter' -- need to configure treesitter -after- it's imported
 
 	-- telescope fuzzy finder + extensions
 	use {
 	    'nvim-telescope/telescope.nvim',
 	    requires = { {'nvim-lua/plenary.nvim'} },
-	    config = function() require 'config/telescope' end,
+	    config = function() require 'config/plugins/telescope' end,
 	}
 	use {
 	    'nvim-telescope/telescope-fzf-native.nvim',
@@ -63,33 +63,33 @@ return require('packer').startup({function(use)
 	-- show git changes in editor + status bar
 	use {
 		'lewis6991/gitsigns.nvim',
-		config = function() require 'config/gitsigns' end,
+		config = function() require 'config/plugins/gitsigns' end,
 	}
 
 	-- harpoon
 	use {
 	  'ThePrimeagen/harpoon',
 	  requires = { {'nvim-lua/plenary.nvim'} },
-	  config = function() require 'config/harpoon' end,
+	  config = function() require 'config/plugins/harpoon' end,
 	}
 
 	-- typical autopairs, surround/sandwich etc plugins
 	use {
 	  'windwp/nvim-autopairs',
-	  config = function() require 'config/autopairs' end,
+	  config = function() require 'config/plugins/autopairs' end,
 	}
 	use 'machakann/vim-sandwich'
 
 	-- trouble — warnings, errors, quickfix list etc
 	use {
 	  'folke/trouble.nvim',
-	  config = function() require 'config/trouble' end,
+	  config = function() require 'config/plugins/trouble' end,
 	}
 
 	-- which key — key mappings popup!
 	use {
 		"folke/which-key.nvim",
-		config = function () require 'config/which-key' end,
+		config = function () require 'config/plugins/which-key' end,
 	}
 
 	-- themes
@@ -104,20 +104,20 @@ return require('packer').startup({function(use)
 	-- indent guides
 	use {
 	  'lukas-reineke/indent-blankline.nvim',
-	  config = function() require 'config/indent-blankline' end,
+	  config = function() require 'config/plugins/indent-blankline' end,
 	}
 
 	-- cursor animations
 	use {
 	  'edluffy/specs.nvim',
-	  config = function() require 'config/specs' end,
+	  config = function() require 'config/plugins/specs' end,
 	}
 
 	-- use nvim in the browser
 	use {
     'glacambre/firenvim',
     run = function() vim.fn['firenvim#install'](0) end,
-		config = function() require 'config/firenvim' end,
+		config = function() require 'config/plugins/firenvim' end,
 	}
 
 	-- icons

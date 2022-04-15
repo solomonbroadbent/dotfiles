@@ -1,7 +1,7 @@
 -- prefer to download treesitter bindings using git instead of curl
 require("nvim-treesitter.install").prefer_git = true
 
-local key_binds = require('config/treesitter/key-binds').key_binds
+local key_binds = require('config/plugins/treesitter/key-binds').key_binds
 
 require('nvim-treesitter.configs').setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
