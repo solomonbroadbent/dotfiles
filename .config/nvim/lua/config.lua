@@ -6,10 +6,10 @@ local config = {
     		threshold = 0 -- measure every plugin no matter how fast
   	},
 	display = {
-    		open_fn = function()
-      			return require('packer.util').float({ border = 'single' })
-    		end
-  	}
+    open_fn = function()
+      return require('packer.util').float({ border = 'single' })
+    end
+  }
 }
 
 return require('packer').startup({function(use)
@@ -21,6 +21,7 @@ return require('packer').startup({function(use)
 	  'williamboman/nvim-lsp-installer',
 	  config = function() require 'config-lsp' end,
 	}
+	-- use 'jose-elias-alvarez/null-ls.nvim'
 	-- use null-ls
 
 	-- lsp completion. not entirely sure why i need this 😕
