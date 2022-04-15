@@ -21,33 +21,7 @@ vim.g.airline_right_sep = '\u{E0B6}'
 vim.g.airline_left_alt_sep = '\u{E0B5}' -- haven't seen these thinner ones actually get used...
 vim.g.airline_right_alt_sep = '\u{E0B7}'
 
--- options for https://github.com/kristijanhusak/vim-hybrid-material theme
--- vim.g.enable_bold_font = 1
--- vim.g.enable_italic_font = 1
--- vim.opt.background = dark
--- vim.g.airline_theme = 'hybrid'
--- colorscheme hybrid_material
-
--- options for https://github.com/mhartington/oceanic-next
--- syntax enable
--- let g:oceanic_next_terminal_bold = 1
--- let g:oceanic_next_terminal_italic = 1
--- let g:airline_theme='oceanicnext'
--- colorscheme OceanicNext
-
--- options for https://github.com/kaicataldo/material.vim
-vim.g.airline_theme = 'material'
--- vim.g.airline_theme = 'hybrid'
-vim.g.material_theme_style = 'default'
-vim.g.material_terminal_italics = 1
--- can override theme colours below
-vim.cmd [[
-	augroup colorschemes
-  	autocmd!
-		" autocmd ColorScheme material highlight Folded cterm=italic gui=italic ctermfg=145 guifg='#546e7a'
-	augroup end
-]]
-vim.cmd('colorscheme material')
+require 'config/themes/material/kaicataldo'
 
 -- things for https://github.com/ryanoasis/vim-devicons
 vim.g.encoding = 'UTF-8'
