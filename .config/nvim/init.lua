@@ -40,6 +40,13 @@ vim.g.airline_theme = 'material'
 -- vim.g.airline_theme = 'hybrid'
 vim.g.material_theme_style = 'default'
 vim.g.material_terminal_italics = 1
+-- can override theme colours below
+vim.cmd [[
+	augroup colorschemes
+  	autocmd!
+		" autocmd ColorScheme material highlight Folded cterm=italic gui=italic ctermfg=145 guifg='#546e7a'
+	augroup end
+]]
 vim.cmd('colorscheme material')
 
 -- things for https://github.com/ryanoasis/vim-devicons
@@ -77,7 +84,38 @@ vim.opt.smartindent = true
 
 -- highlight characters as searching
 vim.opt.incsearch = true
-vim.g.nobackup = true -- don't make annoying .swap files (i think?)
 vim.g.nowrap = true -- don't wrap on load. maybe not working...
+
+-- fold blocks nested n levels down when opening a file
+vim.o.foldlevel = 2
+-- TODO: change fillchars to tabs (need the math)
+-- TODO: unbold the folds + maybe change colour to yellow
+vim.o.fillchars = 'fold: ' -- remove distracting fold spam characters
+vim.cmd [[
+	set foldtext=CustomFoldText()
+	function CustomFoldText()
+		let indent_level = indent(v:foldstart)
+		let indent = repeat(' ', indent_level)
+
+		let line_count = v:foldend - v:foldstart + 1
+		let snippet = substitute(getline(v:foldstart), "^ *\" *", "", 1)
+
+		return indent . snippet . ' ... <- ' . line_count . ' lines'
+	endfunction
+]]
+
+-- vim auto save all files
+vim.cmd [[
+	au FocusLost * :wa
+	au InsertLeave * :wa
+]]
+
+-- backup settings — disable swap and enable backup mode
+vim.g.noswapfile = true
+vim.g.backup = true
+
+vim.g.backupdir = '~/.vim/backup//'
+vim.g.undodir = '~/.vim/undo//'
+vim.g.directory = '~/.vim/swap//' -- unsure if really need this
 
 require 'key-binds'
