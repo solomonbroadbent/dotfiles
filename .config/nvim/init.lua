@@ -118,4 +118,4 @@ vim.g.backupdir = '~/.vim/backup//'
 vim.g.undodir = '~/.vim/undo//'
 vim.g.directory = '~/.vim/swap//' -- unsure if really need this
 
-require 'key-binds'
+require 'config/key-binds'

@@ -9,8 +9,8 @@ local lsp_installer = require('nvim-lsp-installer')
 -- end
 
 -- TODO: add custom command for checking language server list and installing from it
-vim.cmd[[ command! LspSync lua require('custom-scripts').install_language_servers() ]]
-vim.cmd [[ command! Test lua require('custom-scripts').test() ]]
+vim.cmd[[ command! LspSync lua require('config/custom-scripts').install_language_servers() ]]
+vim.cmd [[ command! Test lua require('config/custom-scripts').test() ]]
 
 -- TODO: look into LSIF integration https://lsif.dev
 -- TODO: https://github.com/hrsh7th/nvim-cmp/issues/156#issuecomment-916338617
@@ -20,8 +20,8 @@ lsp_installer.on_server_ready(function(server)
       -- pass this capabilities from to every lsp server. makes nvim-cmp work with lsp-installer!
       capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 			-- attach keybinds for lsp when one is available
-			on_attach = require('config-lsp/key-binds').lsp_on_attach,
-			flags = require('config-lsp/key-binds').lsp_flags,
+			on_attach = require('config/lsp/key-binds').lsp_on_attach,
+			flags = require('config/lsp/key-binds').lsp_flags,
     }
 
     -- prevent 'vim is undefined global' error in lua
