@@ -18,8 +18,8 @@ vim.g.guifont = 'Fira_Code:h14'
 -- vim.o.nocompatible = true -- TODO: disable vi compatibility. apparently it can cause issues
 vim.o.scrolloff = 10 -- keep lines showing as scroll
 vim.opt.incsearch = true -- highlight characters as searching
-vim.g.nowrap = true -- don't wrap on load. maybe not working...
 
+require 'config/tweaks/wrapping'
 require 'config/tweaks/highlight-cursor-line'
 require 'config/tweaks/prefer-tabs'
 require 'config/tweaks/line-numbers'
