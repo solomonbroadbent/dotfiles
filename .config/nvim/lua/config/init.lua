@@ -99,6 +99,7 @@ return require('packer').startup({function(use)
 	-- status bar
 	use 'vim-airline/vim-airline'
 	use 'vim-airline/vim-airline-themes'
+	require 'config/plugins/airline' -- config needs to be applied --after--
 
 	-- indent guides
 	use {
