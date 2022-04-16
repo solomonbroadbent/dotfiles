@@ -1,7 +1,7 @@
 local which_key = require 'which-key'
 
 local actions = {
-	find_files = '<cmd>Telescope find_files<cr>',
+	find_files = '<cmd>Telescope find_files hidden=true<cr>',
 	live_grep = '<cmd>Telescope live_grep<cr>',
 	find_buffers = '<cmd>Telescope buffers<cr>',
 	help_tags = '<cmd>Telescope help_tags<cr>',
