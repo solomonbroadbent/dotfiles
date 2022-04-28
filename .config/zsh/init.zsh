@@ -1,3 +1,6 @@
+# priority tweaks
+source ~/.config/zsh/tweaks/powerlevel10k-instant-prompt.zsh
+
 # plugins
 source ~/.config/zsh/plugins/vi-mode/init.zsh
 source ~/.config/zsh/plugins/autosuggestions/init.zsh
