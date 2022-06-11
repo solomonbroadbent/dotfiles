@@ -1,3 +1,12 @@
+# setup on new machine
+- `cd $HOME`
+- `git clone --bare git@github.com:solomonbroadbent/dotfiles $HOME/.dotfiles.git`
+- `alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME"`
+- `dotfiles checkout`
+- `dotfiles config --local status.showUntrackedFiles no`
+https://www.atlassian.com/git/tutorials/dotfiles
+TODO: create script using bit.do so can run like `curl -Lks http://bit.do/dotfiles-install | /bin/zsh`
+
 # pre-reqs
 - add `alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME"` to zsh aliases
 - setup repo `dotfiles config status.showUntrackedFiles no` 
