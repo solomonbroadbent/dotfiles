@@ -42,6 +42,13 @@ return require('packer').startup({function(use)
 	use 'hrsh7th/vim-vsnip-integ' -- i think needed to integrate with native neovim lsp
 	-- use 'rafamadriz/friendly-snippets' -- a bunch of usefull snippets
 
+	-- which key — key mappings popup!
+	-- 	caused big issues when not before nvim treesitter on first install as referenced in treesitter init.lua
+	use {
+		"folke/which-key.nvim",
+		config = function () require 'config/plugins/which-key' end,
+	}
+
 	-- treesitter — gives better syntax hightlighting and can do actions like `daf` (delete around function)
 	use {
 	  'nvim-treesitter/nvim-treesitter',
@@ -84,12 +91,6 @@ return require('packer').startup({function(use)
 	use {
 	  'folke/trouble.nvim',
 	  config = function() require 'config/plugins/trouble' end,
-	}
-
-	-- which key — key mappings popup!
-	use {
-		"folke/which-key.nvim",
-		config = function () require 'config/plugins/which-key' end,
 	}
 
 	-- themes
