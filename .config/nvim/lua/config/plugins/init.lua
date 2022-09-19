@@ -121,8 +121,13 @@ return require('packer').startup({function(use)
 		config = function() require 'config/plugins/firenvim' end,
 	}
 
+	use {
+		'fatih/vim-go',
+		run = ':GoUpdateBinaries', -- docs say should run this to install required go shit after install...
+	}
+
 	-- icons
-	use 'ryanoasis/vim-devicons' -- apparently should be loaded last
+	use '/vim-devicons' -- apparently should be loaded last
 end,
 config = config
 })
