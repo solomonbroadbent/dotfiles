@@ -29,4 +29,5 @@ require 'config/tweaks/line-numbers'
 require 'config/tweaks/fold-decorations'
 require 'config/tweaks/autosaving'
 require 'config/tweaks/backups'
+require 'config/tweaks/remove-listchars'
 
