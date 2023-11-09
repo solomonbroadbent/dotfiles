@@ -127,7 +127,7 @@ return require('packer').startup({function(use)
 	}
 
 	-- icons
-	use '/vim-devicons' -- apparently should be loaded last
+use 'ryanoasis/vim-devicons' -- apparently should be loaded last
 end,
 config = config
 })
