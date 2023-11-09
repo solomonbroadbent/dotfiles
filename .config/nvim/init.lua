@@ -8,7 +8,9 @@ require 'config/plugins/key-binds'
 
 vim.opt.termguicolors = true -- use colors
 
+-- themes here
 require 'config/themes/material/kaicataldo'
+-- require 'config/themes/material/kristijanhusak'
 
 -- things for https://github.com/ryanoasis/vim-devicons
 vim.g.encoding = 'UTF-8'

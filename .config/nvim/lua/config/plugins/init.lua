@@ -94,7 +94,7 @@ return require('packer').startup({function(use)
 	}
 
 	-- themes
-	use 'kristijanhusak/vim-hybrid-material'
+	-- use 'kristijanhusak/vim-hybrid-material'
 	use { 'kaicataldo/material.vim', branch = 'main' }
 
 	-- status bar
