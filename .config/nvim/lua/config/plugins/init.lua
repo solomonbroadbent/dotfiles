@@ -16,12 +16,15 @@ return require('packer').startup({function(use)
 	use 'wbthomason/packer.nvim' -- manager packer with packer
 
 	-- lsp etc
-	use 'neovim/nvim-lspconfig'
+	-- TODO: confirm lsp stuff loaded in order
 	use {
-	  'williamboman/nvim-lsp-installer',
-	  config = function() require 'config/plugins/lsp' end,
+		'williamboman/mason.nvim',
+	  config = function() require 'config/plugins/lsp'  end,
 	}
-	-- use 'jose-elias-alvarez/null-ls.nvim'
+	use 'williamboman/mason-lspconfig.nvim'
+	use 'neovim/nvim-lspconfig'
+
+	--use 'jose-elias-alvarez/null-ls.nvim'
 	-- use null-ls
 
 	-- lsp completion. not entirely sure why i need this 😕
@@ -116,18 +119,19 @@ return require('packer').startup({function(use)
 
 	-- use nvim in the browser
 	use {
-    'glacambre/firenvim',
-    run = function() vim.fn['firenvim#install'](0) end,
+    		'glacambre/firenvim',
+    		run = function() vim.fn['firenvim#install'](0) end,
 		config = function() require 'config/plugins/firenvim' end,
 	}
 
-	use {
-		'fatih/vim-go',
-		run = ':GoUpdateBinaries', -- docs say should run this to install required go shit after install...
-	}
+	-- IDK WTF BROKEN WITH VIM GO
+	-- use {
+	--	'fatih/vim-go',
+	--	run = ':GoUpdateBinaries', -- docs say should run this to install required go shit after install...
+	--}
 
 	-- icons
-use 'ryanoasis/vim-devicons' -- apparently should be loaded last
+	use 'ryanoasis/vim-devicons' -- apparently should be loaded last
 end,
 config = config
 })
