@@ -15,6 +15,8 @@ local config = {
 return require('packer').startup({function(use)
 	use 'wbthomason/packer.nvim' -- manager packer with packer
 
+	-- TODO: add dressing.nvim
+
 	-- lsp etc
 	-- TODO: confirm lsp stuff loaded in order
 	use {

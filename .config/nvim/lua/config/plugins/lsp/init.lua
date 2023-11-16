@@ -1,3 +1,4 @@
+local util = require('lspconfig.util')
 
 require('mason').setup({
 	ui = {
@@ -24,6 +25,15 @@ require('lspconfig')['gopls'].setup({
 require('lspconfig')['lua_ls'].setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
+	cmd = {'gopls'},
+	filetypes = {
+		'go',
+		'gomod',
+		'gowork',
+		'gotmpl',
+	},
+	root_dir = util.root_pattern('go.work', 'go.mod', '.git') -- idk wut am doin
+	-- TODO: check "analyzers" doc in gopls repo to find useful features
 })
 
 
